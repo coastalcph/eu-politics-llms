@@ -47,11 +47,10 @@ Mexico City, Mexico, June 16–21, 2024.](https://openreview.net/pdf?id=E-S6354v
 ```
 @inproceedings{chalkidis-and-brandl-eu-llama-2024,
     title = "Llama meets EU: Investigating the European political spectrum through the lens of LLMs",
-    author = "Chalkidis, Ilias  and
-      Stephanie Brandl",
+    author = "Chalkidis, Ilias  and Brandl, Stephanie",
     booktitle = "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics",
     month = jun,
-    year = "2021",
+    year = "2024",
     address = "Mexico City, Mexico",
     publisher = "Association for Computational Linguistics",
 }

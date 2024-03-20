@@ -26,7 +26,7 @@ As part of this work, we release the following LoRA adapters:
 | Greens/EFA | [`coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-greens-efa`](https://huggingface.co/coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-greens-efa)
 
 
-# Use code
+# Use Code
 
 ### Install dependencies
 
@@ -34,7 +34,25 @@ As part of this work, we release the following LoRA adapters:
 pip install -r requirements.txt
 ```
 
-TBA
+### Audit Llama Chat
+
+```shell
+python ./audit_llms/audit_llms.py
+```
+
+### Contextualize Auduting Settings A-C
+
+```shel
+python ./audit_llms/setting_a.py
+python ./audit_llms/setting_b.py
+python ./audit_llms/setting_c.py
+```
+
+### Fine-tune Llama Chat to EU Debates
+
+```shell
+python ./finetune_llms/finetune_llms.py
+```
 
 
 # Citation Information

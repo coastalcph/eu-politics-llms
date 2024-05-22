@@ -1,8 +1,8 @@
 # Llama meets EU: Investigating the European Political Spectrum through the Lens of LLMs
 
-Instruction-finetuned Large Language Models inherit clear political leanings that have been shown to influence downstream task performance. In this work ([Chalkidis and Brandl, 2024](https://openreview.net/pdf?id=E-S6354vKNn)),  we expand this line of research beyond the two-party system in the US and audit *Llama Chat* on political debates from the European Parliament in various settings to analyze the model's political knowledge and its ability to reason in context. We adapt, i.e., further fine-tune, *Llama Chat*  on parliamentary debates of individual euro parties to reevaluate its political leaning based on the \euandi questionnaire. *Llama Chat* shows extensive prior knowledge of party positions and is capable of reasoning in context. The adapted, party-specific, models are substantially re-aligned towards respective positions which we see as a starting point for using chat-based LLMs as data-driven conversational engines to assist research in political science.
+Instruction-finetuned Large Language Models inherit clear political leanings that have been shown to influence downstream task performance. In this work ([Chalkidis and Brandl, 2024](https://arxiv.org/abs/2403.13592)),  we expand this line of research beyond the two-party system in the US and audit *Llama Chat* on political debates from the European Parliament in various settings to analyze the model's political knowledge and its ability to reason in context. We adapt, i.e., further fine-tune, *Llama Chat*  on parliamentary debates of individual euro parties to reevaluate its political leaning based on the \euandi questionnaire. *Llama Chat* shows extensive prior knowledge of party positions and is capable of reasoning in context. The adapted, party-specific, models are substantially re-aligned towards respective positions which we see as a starting point for using chat-based LLMs as data-driven conversational engines to assist research in political science.
 
-![Radar Plots](https://i.ibb.co/7yVy32k/radar-plots-big.png)
+![Radar Plots](https://i.ibb.co/28Ptc37/Screenshot-2024-05-22-at-10-59-26.png)
 
 ## Datasets
 
@@ -25,6 +25,17 @@ As part of this work, we release the following LoRA adapters:
 | GUE/NGL | [`coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-gue-ngl`](https://huggingface.co/coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-gue-ngl)
 | Greens/EFA | [`coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-greens-efa`](https://huggingface.co/coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-greens-efa)
 
+You can use the adapted models via the HuggingFace API:
+
+```python
+
+from peft import PeftModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-epp")
+base_model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-13b-chat-hf")
+model = PeftModel.from_pretrained(base_model, "coastalcph/Llama-2-13b-chat-hf-LoRA-eu-debates-epp")
+```
 
 # Use Code
 
@@ -40,7 +51,7 @@ pip install -r requirements.txt
 python ./audit_llms/audit_llms.py
 ```
 
-### Contextualize Auduting Settings A-C
+### Contextualize Auditing Settings A-C
 
 ```shel
 python ./audit_llms/setting_a.py
@@ -60,7 +71,7 @@ python ./finetune_llms/finetune_llms.py
 *[Llama meets EU: Investigating the European political spectrum through the lens of LLMs. 
 Ilias Chalkidis and Stephanie Brandl. 
 In the Proceedings of the Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 
-Mexico City, Mexico, June 16–21, 2024.](https://openreview.net/pdf?id=E-S6354vKNn)*
+Mexico City, Mexico, June 16–21, 2024.](https://arxiv.org/abs/2403.13592)*
 
 ```
 @inproceedings{chalkidis-and-brandl-eu-llama-2024,
